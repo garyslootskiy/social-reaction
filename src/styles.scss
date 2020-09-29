@@ -1,0 +1,79 @@
+body {
+  font-family: helvetica;
+}
+
+.app {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.header {
+  background-color: blue;
+  height: 120px;
+  width: 100%;
+}
+
+.feed {
+  background-color: red;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tweetlist {
+  background-color: green;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.tweetitem {
+  color: black;
+  background-color: yellow;
+  width: 90%;
+  border: 1px solid black;
+  border-radius: 2px;
+  margin-bottom: 3px;
+  padding: 4px;
+}
+
+.newslist {
+  color: white;
+  background-color: purple;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.newsitem {
+  color: black;
+  background-color: cyan;
+  width: 90%;
+  border: 1px solid black;
+  border-radius: 2px;
+  margin-bottom: 3px;
+  padding: 4px;
+  transition: background-color 0.12s;
+  &:hover {
+    background-color: darkgrey;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.button {
+  margin: 10px;
+  padding: 15px;
+  background-color: #dddddd;
+  border: 1px solid black;
+  width: 150px;
+  text-align: center;
+  transition: background-color 0.12s;
+  &:hover {
+    background-color: darkgrey;
+    color: white;
+    cursor: pointer;
+  }
+}
