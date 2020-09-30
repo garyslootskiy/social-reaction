@@ -1,10 +1,10 @@
-const express = require('express');
 const path = require('path');
+const express = require('express');
 const app = express();
+
 const middleware = require('./middleware.js')
 
 const port = process.env.PORT || 3000;
-
 const DIST_DIR = path.join(__dirname, '../dist');
 const HTML_FILE = path.join(DIST_DIR, 'index.html');
 
@@ -12,6 +12,10 @@ app.use(express.static(DIST_DIR));
 
 app.get('/api/newsitems', middleware.getNewsItems, (req, res) => {  
   res.status(200).send(res.locals.newsItems);
+});
+
+app.get('/api/tweetitems/:id', middleware.getTweetItems, (req, res) => {  
+  res.status(200).send(res.locals.tweetItems);
 });
 
 app.get('/', (req, res) => {

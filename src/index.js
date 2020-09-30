@@ -21,23 +21,61 @@ class App extends Component {
 
     this.state = {
       newsItems: [],
-      currentId: 0
     }
 
     this.refreshNewsItems = this.refreshNewsItems.bind(this);
     this.showTweetItems = this.showTweetItems.bind(this);
+    this.testFunc = this.testFunc.bind(this);
   }
 
   refreshNewsItems() {
+    let newsItems;
+    let fetchArray = [];
+
     fetch('/api/newsitems')
     .then(res => res.json())
     .then((data) => {
-      return this.setState({
-        ...this.state,
-        newsItems: data,
-      });
+        newsItems = data;
+
+        newsItems.forEach(article => {
+          const title = article.title;
+          const regex = /(^(?:\S+\s+\n?){1,4})/;
+          const twitterString = title.match(regex)[0].replace(/[^a-zA-Z0-9 ]/g, "");
+          const twitterStringNotArray = twitterString.split(" ");
+          const notElem  = `-${twitterStringNotArray[3]} -RT lang:en`;
+          twitterStringNotArray.splice(3,1);
+          const twtterStringFinal = twitterStringNotArray.join(" ");
+          const query = ' &tweet.fields=text&tweet.fields=created_at&expansions=author_id&expansions=attachments.media_keys&tweet.fields=public_metrics&tweet.fields=lang'
+          
+          console.log(`${twtterStringFinal}${notElem}`);
+
+          let promiseItem = new Promise((resolve, reject) => {
+            fetch(`/api/tweetitems/${twtterStringFinal}${notElem}`)
+            .then(res => res.json())
+            .then((data) => {
+              if(data.data) {
+                article.tweets = data;
+              } else {
+                article.tweets = false;
+              }
+              resolve();
+            })
+            .catch(err => console.log('App.refreshNewsItems-tweets: ', err));
+          }); 
+          fetchArray.push(promiseItem);
+        });
+      })
+    .then(() => {
+      Promise.all(fetchArray)
+      .then(
+        this.setState({
+          ...this.state,
+          newsItems
+        }) 
+      )
     })
-    .catch(err => console.log('App.refreshNewsItems: ', err));
+    .catch(err => console.log('App.refreshNewsItems-news: ', err));
+    
   }
 
   showTweetItems(id) {
@@ -47,10 +85,20 @@ class App extends Component {
     });
   }
 
+  testFunc() {
+    return this.setState({
+      ...this.state
+    });
+  }
+
+  componentDidMount() {
+    this.refreshNewsItems();
+  }
+
   render() {
     return (
       <div className = "app">
-        <Header refreshNewsItems={this.refreshNewsItems}/>
+        <Header testFunc={this.testFunc}/>
         <Feed state={this.state} showTweetItems={this.showTweetItems}/>
       </div>
     );

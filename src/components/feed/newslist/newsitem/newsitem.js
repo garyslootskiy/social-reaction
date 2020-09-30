@@ -5,9 +5,13 @@ class NewsItem extends Component {
     super();
   }
   render() {
+    const details = this.props.details;
+    const source = details.source.name;
+    const {id , title, author, description, url, urlToImage, publishedAt} = details;
+    const date = new Date(publishedAt);
     return (
       <div className = "newsitem" onClick={() => this.props.showTweetItems(this.props.details.id)}>
-        <span>{`${this.props.details.id}. ${this.props.details.title}`}</span>
+        <span>{`${title} by ${author} at ${source}`}</span>
       </div>
     );
   }

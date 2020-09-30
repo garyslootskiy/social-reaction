@@ -7,7 +7,7 @@ class TweetItem extends Component {
   render() {
     return (
       <div className = "tweetitem">
-        <span>TweetItem</span>
+        {this.props.details.text}
       </div>
     );
   }

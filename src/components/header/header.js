@@ -7,8 +7,8 @@ class Header extends Component {
   render() {
     return (
       <div className = 'header'>
-        <span>HEADER</span>
-        <div className = 'button' onClick={() => this.props.refreshNewsItems()}>SHOW NEWS ITEMS</div>
+        <div className = 'title'>Social Reaction</div>
+        <div className = 'button' onClick={() => this.props.testFunc()}>TestFunc</div>
       </div>
     );
   }

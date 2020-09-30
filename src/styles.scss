@@ -1,3 +1,11 @@
+$twitter-blue: #00acee;
+$primary-yellow: #FFEE93;
+$secondary-yellow: #FCF5C7;
+$green: #ADF7B6;
+$peach: #FFC09F;
+$lightgrey: #F5F5F5;
+$darkgrey: #979797;
+
 body {
   font-family: helvetica;
 }
@@ -9,19 +17,29 @@ body {
 }
 
 .header {
-  background-color: blue;
+  background-color: $primary-yellow;
   height: 120px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 4em;
+  font-weight: 650;
+  font-style: italic;
 }
 
 .feed {
   background-color: red;
   display: flex;
   justify-content: space-around;
+  min-height: 600px;
 }
 
 .tweetlist {
-  background-color: green;
+  background-color: $twitter-blue;
   width: 100%;
   align-items: center;
   display: flex;
@@ -30,7 +48,7 @@ body {
 
 .tweetitem {
   color: black;
-  background-color: yellow;
+  background-color: $lightgrey;
   width: 90%;
   border: 1px solid black;
   border-radius: 2px;
@@ -39,8 +57,8 @@ body {
 }
 
 .newslist {
-  color: white;
-  background-color: purple;
+  color: black;
+  background-color: $secondary-yellow;
   width: 100%;
   align-items: center;
   display: flex;
@@ -49,7 +67,7 @@ body {
 
 .newsitem {
   color: black;
-  background-color: cyan;
+  background-color: white;
   width: 90%;
   border: 1px solid black;
   border-radius: 2px;
