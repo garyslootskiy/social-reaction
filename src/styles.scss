@@ -1,59 +1,296 @@
 $twitter-blue: #00acee;
-$primary-yellow: #FFEE93;
-$secondary-yellow: #FCF5C7;
+$primary-yellow: #005d82;
+$secondary-yellow: #ce2348;
 $green: #ADF7B6;
-$peach: #FFC09F;
+$peach: white;
 $lightgrey: #F5F5F5;
-$darkgrey: #979797;
+$darkgrey: #00acee;
 
 body {
   font-family: helvetica;
+  background-color: white;
+    position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
 }
 
 .app {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   display: flex;
   width: 100%;
   flex-direction: column;
+  align-items: center;
 }
 
 .header {
-  background-color: $primary-yellow;
-  height: 120px;
+  // display: flex;
+  background-color: white;
+  height: 70px;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .title {
-  font-size: 4em;
-  font-weight: 650;
+  font-size: 1.2em;
+  font-weight: 600;
   font-style: italic;
+  left: 5%;
+  color: darkgrey;  
+  position: absolute;
+  .blue {
+    font-size: 1.6em;
+    color: $twitter-blue;
+  }
 }
 
+.right {
+  position: absolute;
+  right: 12%;
+  top: 0px;
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+}
+
+.modal {
+  background-color: $lightgrey;
+  color: black;
+  width: 500px;
+  height: 200px;
+  z-index: 100;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 15px;
+
+  .register {
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .input {
+      width: 50%;
+      margin: 10px;
+      padding: 5px;
+    }
+
+    .btns {
+      display: flex;
+    }
+  }
+}
+
+
+
+.userinfo-master {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  .username {
+    // position: relative;
+    margin: 0px 60px;
+    width: 100%;
+    left: 40px;
+    font-weight: 600;
+    font-size: 1.5em;
+    // display: flex;
+    // justify-content: center;
+    // background-color: red;
+  }
+
+  .userInfo {
+    background-color: $darkgrey;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 2px $darkgrey;
+    padding: 10px;
+    align-items: center;
+  }
+
+
+
+
+.add-query {
+  height: 80px;
+  width: 135px;
+  background-color: $secondary-yellow;
+  display: flex;
+  border: 1px solid black;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  transition: .18ms;
+  box-shadow: 1px 1px 2px $secondary-yellow;
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+}
+
+.query-submit-btn {
+  margin: 8px;
+  padding: 5px 20px;
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 1px 1px 2px $secondary-yellow;
+  text-align: center;
+  transition: background-color 0.12s;
+  border-radius: 3px;
+  &:hover {
+    background-color: darkgrey;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.query-input-box {
+  border-radius: 3px;
+  width: 110px;
+  padding: 5px 8px;
+}
+
+.queryItem {
+  height: 100px;
+  width: 100px;
+  background-color: $peach;
+  display: flex;
+  border: 1px solid black;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  transition: .18ms;
+  box-shadow: 1px 1px 2px $secondary-yellow;
+  
+  .removeItem {
+    display: none;
+  }
+
+  &:hover {
+    background-color: $primary-yellow;
+    color: white;
+    cursor: pointer;
+
+    .removeItem {
+      display: block;
+      color: white;
+      width: 12px;
+      height: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $secondary-yellow;
+      border: 1px $secondary-yellow solid;
+      border-radius: 6px;
+      align-self: flex-start;
+      justify-self: flex-start;
+    }
+
+  }
+
+
+}
+
+}
+
+// .removeItem:hover ~ .queryItem{
+//     background-color: $secondary-yellow;
+// }
+
 .feed {
-  background-color: red;
   display: flex;
   justify-content: space-around;
   min-height: 600px;
+  width: 90%;
 }
+
+
 
 .tweetlist {
-  background-color: $twitter-blue;
+  padding: 25px;
+  // background-color: $twitter-blue;
+  background-color: rgb(252, 252, 252);
   width: 100%;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+  border: 1px solid $darkgrey;
+  border-radius: 0px 5px 0px 0px;
+  // display: flex;
+  // align-items: center;
+  // flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-content: start;
+  grid-gap: 6px;
+  grid-auto-flow: row;
 }
+.tweet-container {
+  display: flex;
+  flex-direction: row;
+  max-width: 450px;
+  height: 350px;
 
-.tweetitem {
-  color: black;
-  background-color: $lightgrey;
-  width: 90%;
-  border: 1px solid black;
-  border-radius: 2px;
-  margin-bottom: 3px;
-  padding: 4px;
+  img {
+    width: 50px;
+    border-radius: 25px;
+    margin: 10px;
+  }
+
+  .tweetitem {
+    color: black;
+    background-color: rgb(252, 252, 252);
+    margin-bottom: 3px;
+    overflow: hidden;
+    font-size: 1.4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .author {
+      justify-content: flex-end;
+      align-self: flex-start;
+      font-size: 0.8em;
+      color: rgb(28, 28, 28);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 600;
+
+      .at {
+        font-size: 0.8em;
+        font-weight: 400;
+        color: rgb(57, 57, 57);
+      }
+    }
+
+    .text {
+      height: 250px;
+      max-width: 400px;
+      border: 1px solid $twitter-blue;
+      box-shadow: 1px 1px 2px grey;
+      border-radius: 6px;
+      padding: 10px;
+      justify-content: flex-start;
+      align-self: flex-start;
+    }
+  }
+
+
 }
 
 .newslist {
@@ -63,6 +300,9 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
+  border: 1px solid $darkgrey;
+  border-radius: 5px 0px 0px 0px;
+  max-width: 400px;
 }
 
 .newsitem {
@@ -71,13 +311,40 @@ body {
   width: 90%;
   border: 1px solid black;
   border-radius: 2px;
-  margin-bottom: 3px;
+  margin-top: 3px;
   padding: 4px;
   transition: background-color 0.12s;
+  display: flex;
+  box-shadow: 1px 1px 3px $darkgrey;
+
   &:hover {
     background-color: darkgrey;
     color: white;
     cursor: pointer;
+  }
+
+  img {
+    width:100px;
+    margin: 4px 20px 4px 4px;
+    border-radius: 3px;
+  }
+}
+.active-newsitem {
+  color: white;
+  background-color: darkgrey;
+  width: 90%;
+  border: 1px solid black;
+  border-radius: 2px;
+  margin-top: 3px;
+  padding: 4px;
+  transition: background-color 0.12s;
+  display: flex;
+  box-shadow: 1px 1px 3px $darkgrey;
+
+  img {
+    width:100px;
+    margin: 4px 20px 4px 4px;
+    border-radius: 3px;
   }
 }
 
@@ -89,6 +356,8 @@ body {
   width: 150px;
   text-align: center;
   transition: background-color 0.12s;
+  font-size: 1em;
+  font-weight: 500;
   &:hover {
     background-color: darkgrey;
     color: white;

@@ -9,9 +9,12 @@ class NewsItem extends Component {
     const source = details.source.name;
     const {id , title, author, description, url, urlToImage, publishedAt} = details;
     const date = new Date(publishedAt);
+    const classStore = (this.props.currentId == this.props.index) ? 'active-newsitem' : 'newsitem';
+    
     return (
-      <div className = "newsitem" onClick={() => this.props.showTweetItems(this.props.details.id)}>
-        <span>{`${title} by ${author} at ${source}`}</span>
+      <div className = {classStore} onClick={() => this.props.showTweetItems(this.props.details.id)}>
+        <img src={urlToImage}></img>
+        <div><strong>{title}</strong><br/>{` at ${source}`}</div>
       </div>
     );
   }

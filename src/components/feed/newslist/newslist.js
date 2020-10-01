@@ -9,11 +9,10 @@ class NewsList extends Component {
     const newsItems = [];
     this.props.state.newsItems.forEach((article, index) => {
       article.id = index;
-      newsItems.push(<NewsItem details={article} key={`article#${index}`} showTweetItems={this.props.showTweetItems}/>)
+      newsItems.push(<NewsItem details={article} key={`article#${index}`} showTweetItems={this.props.showTweetItems} currentId={this.props.state.currentId} index={index}/>)
     });
     return (
       <div className = "newslist">
-        <span>NEWSLIST</span>
         {newsItems}
       </div>
     );

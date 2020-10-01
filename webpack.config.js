@@ -14,7 +14,11 @@ module.exports = {
   devServer: {
   //   publicPath: '/dist',
     proxy: {
-      '/api': 'http://localhost:3000/'
+      '/api': 'http://localhost:3000/',
+      '/signup': 'http://localhost:3000/',
+      '/signin': 'http://localhost:3000/',
+      '/db': 'http://localhost:3000/',
+      '/logout': 'http://localhost:3000/'
     }
   },
   module: {

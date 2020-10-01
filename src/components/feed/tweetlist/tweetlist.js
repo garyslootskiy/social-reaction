@@ -12,7 +12,7 @@ class TweetList extends Component {
       if(this.props.state.newsItems[currentId].tweets) {
         const currentTweetTopic = this.props.state.newsItems[currentId].tweets.data;
         currentTweetTopic.forEach((tweet, index) => {
-          tweetArray.push(<TweetItem details={tweet} key={`tweet#${index}`} />)
+          if(index < 24) tweetArray.push(<TweetItem details={tweet} key={`tweet#${index}`} authors={this.props.state.tweetAuthors} />)
         });
       } else {
         tweetArray.push(<div className = "tweetitem">No Related Tweets Found</div>)}
@@ -20,7 +20,6 @@ class TweetList extends Component {
 
     return (
       <div className = 'tweetlist'>
-        <span>TweetList for id#{this.props.state.currentId}</span>
         {tweetArray}
       </div>
     );
